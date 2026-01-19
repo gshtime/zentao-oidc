@@ -50,7 +50,7 @@ class oidcModel extends model
         $user = new stdclass();
         $user->account = $newUser->account;
         $user->realname = $newUser->chinesename;
-        $user->email = $newUser->email;
+        $user->email = $newUser->email ? $newUser->account : '@no-email.com';;
         $user->password = md5($this->create_password(12)); //随机生成12位密码长度
         $user->deleted = '0';
         $this->dao->insert(TABLE_USER)->data($user)->autoCheck()->exec();

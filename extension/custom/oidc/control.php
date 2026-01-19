@@ -68,7 +68,7 @@ class oidc extends control
         $dbuser->rights = $this->user->authorize($dbuser->account);
         $dbuser->groups = $this->user->getGroups($dbuser->account);
         $dbuser->view = $this->user->grantUserView($dbuser->account, $dbuser->rights['acls']);
-        $dbuser->last = date(DT_DATETIME1, $last);
+        $dbuser->last = $last;
         $dbuser->lastTime = $dbuser->last;
         $dbuser->modifyPassword = ($dbuser->visits == 0 and !empty($this->config->safe->modifyPasswordFirstLogin));
         if ($dbuser->modifyPassword) $dbuser->modifyPasswordReason = 'modifyPasswordFirstLogin';
